@@ -65,6 +65,18 @@ void read_parameterfile(ParameterMap & param, std::string filename) {
         param["cosmology_wa"] = lfp.read_double("cosmology_wa", 0.0, REQUIRED);
     }
 
+    // Vic changes begin
+    //=============================================================
+    // w0-wa + beta Modified growth factor model
+    //=============================================================
+    if (param.get<std::string>("cosmology_model") == "w0waCDM_DETG") {
+        param["cosmology_w0"] = lfp.read_double("cosmology_w0", -1.0, REQUIRED);
+        param["cosmology_wa"] = lfp.read_double("cosmology_wa", 0.0, REQUIRED);
+        param["cosmology_beta"] = lfp.read_double("cosmology_beta", 0.0, REQUIRED);
+        param["cosmology_p"] = lfp.read_double("cosmology_p", 0.0, REQUIRED);
+    }
+    // Vic changes end
+
     //=============================================================
     // DGP self-accelerating model
     //=============================================================

@@ -250,6 +250,19 @@ class Cosmology {
 
     virtual double dlogHdloga_of_a([[maybe_unused]] double a) const = 0;
 
+    // Vic changes begin
+
+    virtual double get_beta() const {
+        std::cout << "Cosmology:: Error accessing parameter beta, unsupported";
+        throw std::runtime_error("get_beta() not implemented for this cosmology type.");
+    }
+    virtual double get_p() const {
+        std::cout << "Cosmology:: Error accessing parameter beta, unsupported";
+        throw std::runtime_error("get_p() not implemented for this cosmology type.");
+    }
+
+    // Vic changes end
+
     //========================================================================
     // Output the stuff we compute
     //========================================================================

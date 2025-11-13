@@ -18,6 +18,9 @@
 //JG begins
 #include "Cosmology_H_table.h"
 //JG ends
+// Vic changes begin
+#include "Cosmology_w0wa_DETG.h"
+// Vic changes end
 
 //=============================================================
 // The availiable gravity models
@@ -28,6 +31,9 @@
 #include "GravityModel_fofr.h"
 #include "GravityModel_JBD.h"
 #include "GravityModel_symmetron.h"
+// Vic changes begin
+#include "GravityModel_w0wa_DETG.h"
+// Vic changes end
 
 #include "Simulation.h"
 
@@ -137,6 +143,10 @@ int main(int argc, char ** argv) {
     else if (cosmology_model == "H_table")
         cosmo = std::make_shared<Cosmology_H_table>();
     //JG ends
+    // Vic changes begin
+    else if (cosmology_model == "w0waCDM_DETG")
+        cosmo = std::make_shared<Cosmologyw0waCDM_DETG>();
+    // Vic changes end
     else
         throw std::runtime_error("Unknown cosmology [" + cosmology_model + "]");
     cosmo->read_parameters(param);
@@ -158,6 +168,10 @@ int main(int argc, char ** argv) {
         grav = std::make_shared<GravityModelJBD<NDIM>>(cosmo);
     else if (gravity_model == "Symmetron")
         grav = std::make_shared<GravityModelSymmetron<NDIM>>(cosmo);
+    // Vic changes begin
+    else if (gravity_model == "DETG")
+        grav = std::make_shared<GravityModelDETG<NDIM>>(cosmo);
+    // Vic changes end
     else
         throw std::runtime_error("Unknown gravitymodel [" + gravity_model + "]");
     grav->read_parameters(param);

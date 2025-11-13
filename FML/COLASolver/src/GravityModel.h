@@ -88,7 +88,9 @@ class GravityModel {
     //========================================================================
     // Growth functions
     //========================================================================
-    double get_D_1LPT(double a, double koverH0 = 0.0) const {
+    // Vic changes - this was not virtual before
+    virtual double get_D_1LPT(double a, double koverH0 = 0.0) const {
+    // Vic end changes
         koverH0 = std::max(koverH0, koverH0low);
         return not scaledependent_growth ? D_1LPT_of_loga(std::log(a)) :
                                            D_1LPT_of_logkoverH0_loga(std::log(koverH0), std::log(a));
