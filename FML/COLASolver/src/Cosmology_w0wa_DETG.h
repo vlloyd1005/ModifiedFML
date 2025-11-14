@@ -7,7 +7,7 @@
 #include <FML/ODESolver/ODESolver.h>
 #include <FML/ParameterMap/ParameterMap.h>
 #include <FML/Spline/Spline.h>
-#include <FML/Emulator/EuclidEmulator2.h>
+// #include <FML/Emulator/EuclidEmulator2.h>
 
 #include "Cosmology.h"
 
